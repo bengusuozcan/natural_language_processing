@@ -1,15 +1,22 @@
 # -*- coding: utf-8 -*-
 """
 Created on Fri Oct 22 19:03:54 2021
-HW1
-@author: bengu
+@author: Bengusu Ozcan
+
+1) From hw1.pkl dataframe, read 3 columns: "body_basic", "lower", "sw"
+2) Create a dictionary called corpus_analytics whose keys represent each column name above and the value is a pandas dataframe
+3) Each of these pandas dataframes consists of three columns:
+   - token - each row represents a unique token(word)
+   - raw_frequency - total number of times the specific token shows
+   - probability(%) - out of the count of all tokens (non-unique) what % of times does this word show up? 
+4) Sort the each pandas dataframe by "raw_frequency" in descending order
+
 """
 
 import pickle
 import pandas as pd
 the_data = pickle.load(open("hw1.pkl", "rb"))
 
-#QUESTION 1
 
 corpus_analytics = dict()
 for word in the_data.columns:
@@ -23,9 +30,3 @@ tmp_data.split())) * 100
 corpus_data = corpus_data.sort_values("raw_frequency", 
 ascending=False)
 corpus_analytics[word] = corpus_data
-
-#QUESTION 2
-"body_basic - unable to acsertain as top 10 words are common words"
-"lower - seems like entomoly as it was the only uncommon word present in 
-the top 10"
-"sw - clearly entomology/insects"
